@@ -79,85 +79,139 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="60dp"
                 android:lineSpacingExtra="5dp"
                 android:padding="5dp"
                 android:text="A clock is a device used to measure, verify, keep, and indicate time. The clock is one of the oldest human inventions, meeting the need to measure intervals of time shorter than the natural units: the day, the lunar month, and the year. Devices operating on several physical processes have been used over the millennia."
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-            <RatingBar
-                android:id="@+id/ratingBar2"
-                style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
-                android:layout_marginTop="53dp"
-                android:layout_marginBottom="207dp"
-                android:numStars="5"
-                android:rating="4"
-                android:theme="@style/RatingBar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView27"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/textView27"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="52dp"
-                android:text="4.2"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="70dp"
-                android:text="Add Comment"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView27" />
-
-            <EditText
-                android:id="@+id/editTextTextPersonName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="35dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="49dp"
-                android:background="@drawable/et_bg"
-                android:layout_marginEnd="20dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginBottom="200dp"
-                android:background="@drawable/btn_background"
-                android:text="Submit"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="80dp"
+                android:background="@drawable/btn_bid"
+                android:text="Bid"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                app:layout_constraintTop_toBottomOf="@+id/tvb1"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="80dp"
+                android:text="Start Price"
+                android:textColor="@color/antique4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="80dp"
+                android:text="500$"
+                android:textColor="#8BC34A"
+                app:layout_constraintStart_toEndOf="@+id/textView21"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/antique4"
+                android:text="Bid Price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="25dp"
+                android:text="800$"
+                android:textColor="#8BC34A"
+                app:layout_constraintStart_toEndOf="@+id/textView23"
+                app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+            <TextView
+                android:id="@+id/tvbid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="25dp"
+                android:text="Bid Start"
+                android:textColor="@color/antique4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <TextView
+                android:id="@+id/tvb1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="24dp"
+                android:drawableLeft="@drawable/ic_baseline_access_time_24"
+                android:drawablePadding="5dp"
+                android:format12Hour="dd.MM.yyyy"
+                android:format24Hour="@null"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="dd/MM/YYY"
+                android:textColor="@color/antique3"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/tvbid"
+                app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+
+            <TextView
+                android:id="@+id/tv1bid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="25dp"
+                android:text="Bid End"
+                android:textColor="@color/antique4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvbid" />
+
+            <TextView
+                android:id="@+id/tvb2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/ic_baseline_access_time_24"
+                android:drawablePadding="5dp"
+                android:format12Hour="dd.MM.yyyy"
+                android:format24Hour="@null"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="dd/MM/YYY"
+                android:textColor="@color/antique3"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/tv1bid"
+                app:layout_constraintTop_toBottomOf="@+id/tvb1" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

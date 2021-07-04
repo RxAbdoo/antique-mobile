@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
+import com.example.gp.All_f;
 import com.example.gp.R;
 import com.google.android.material.navigation.NavigationView;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
@@ -25,8 +26,8 @@ public class MainHostFragment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_host_fragment);
-        b1 = findViewById(R.id.bo);
-
+        b1 = findViewById(R.id.boo);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new HomeFrag()).commit();
         b1.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int i) {
@@ -40,10 +41,8 @@ public class MainHostFragment extends AppCompatActivity {
                     case R.id.Cart:
                         f = new Cart();
                         break;
-                    case R.id.Favourite:
-                        f = new Fav();
-                        break;
                 }
+                if(f!=null)
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment,f).commit();
 
             }

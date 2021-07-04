@@ -4,6 +4,7 @@ package com.example.gp.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
 public class Userable {
 
     @SerializedName("id")

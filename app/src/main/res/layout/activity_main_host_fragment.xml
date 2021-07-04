@@ -14,15 +14,14 @@
     android:layout_width="0dp"
     android:layout_height="0dp"
     app:defaultNavHost="true"
-    app:layout_constraintBottom_toTopOf="@+id/bo"
+    app:layout_constraintBottom_toTopOf="@+id/boo"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:navGraph="@navigation/host" />
+    app:layout_constraintTop_toTopOf="parent"/>
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bo"
+        android:id="@+id/boo"
         android:background="@drawable/bootom_bg"
         android:elevation="16dp"
         android:orientation="horizontal"
