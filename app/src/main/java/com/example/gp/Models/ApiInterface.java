@@ -1,11 +1,9 @@
 package com.example.gp.Models;
 
 import com.example.gp.AuctionModel.Authentication1;
+import com.example.gp.GetProd.AuctionProduct;
+import com.example.gp.GetProd.Authentication3;
 import com.example.gp.SingleAuctionModel.Authentication2;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -45,6 +43,15 @@ public interface ApiInterface {
     @Headers({"Accept: application/json"})
     @GET("auctions/{id}")
     Call<Authentication2> getOneAuction(@Header("Authorization") String  token, @Path("id")int id);
+
+    @Headers({"Accept: application/json"})
+    @GET("auctions/products/{id}")
+    Call<Authentication3> getOneProduct(@Header("Authorization") String  token, @Path("id")int id);
+
+    @Headers({"Accept: application/json"})
+    @POST("auth/logout")
+    Call<Authentication> logut(@Header("Authorization") String  token);
+
 
 
 

@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".Ui.LoginActivty">
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         android:background="#F7F6FF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,8 +17,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:scaleType="centerCrop"
         android:src="@drawable/logo_removebg"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +32,7 @@
         android:id="@+id/tab"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="140dp"
         android:background="@drawable/view_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -46,7 +45,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="90dp"
         android:text="Welcome To Anteque"
         android:textColor="@color/antique3"
         android:textSize="18sp"
@@ -58,12 +57,13 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab" />
+        app:layout_constraintTop_toBottomOf="@+id/tab"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

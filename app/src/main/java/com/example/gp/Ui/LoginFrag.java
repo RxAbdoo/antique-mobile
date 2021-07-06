@@ -9,7 +9,7 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +32,7 @@ public class LoginFrag extends Fragment {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     AppCompatButton b;
+    private ProgressBar pb1;
     boolean isloggedin=false;
     float v=0;
     @Override
@@ -42,6 +43,7 @@ public class LoginFrag extends Fragment {
         t2 = group.findViewById(R.id.pa_et);
         t3 = group.findViewById(R.id.forget);
         b= group.findViewById(R.id.Login);
+        pb1= group.findViewById(R.id.progressBar2);
         t1.setTranslationX(800);
         t2.setTranslationX(800);
         t3.setTranslationX(800);
@@ -67,12 +69,21 @@ public class LoginFrag extends Fragment {
                 }
             }
         });
+        t3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ResetPass.class));
+
+            }
+        });
         return group;
     }
+
     public void login()
     {
             email = t1.getEditText().getText().toString().trim();
             password = t2.getEditText().getText().toString().trim();
+            pb1.setVisibility(View.VISIBLE);
             PostClient.getInstance().login(email,password).enqueue(new Callback<Authentication>() {
                 @Override
                 public void onResponse(Call<Authentication> call, Response<Authentication> response) {
@@ -85,17 +96,20 @@ public class LoginFrag extends Fragment {
                         editor.putString("token",token);
                         editor.putString("email",email);
                         editor.putString("name",name);
+                        Log.d("Taggg",token);
                         isloggedin=true;
                         editor.putBoolean("isloggedin",isloggedin);
                         editor.apply();
-                        Log.d("tttta",token);
                         startActivity(new Intent(getContext(),MainHostFragment.class));
+                        pb1.setVisibility(View.GONE);
+
 
                     }
                     else
                     {
                         Toast.makeText(getContext(), "doneeeeeeee",Toast.LENGTH_SHORT);
                         Log.d("tttta",response.code()+"");
+                        pb1.setVisibility(View.GONE);
                     }
 
                 }
@@ -104,6 +118,7 @@ public class LoginFrag extends Fragment {
                 public void onFailure(Call<Authentication> call, Throwable t) {
                     Log.d("TAG3", t.getMessage());
                     Toast.makeText(getContext(), "nnnnnnoneeeeeeee", Toast.LENGTH_SHORT).show();
+                    pb1.setVisibility(View.GONE);
 
                 }
 

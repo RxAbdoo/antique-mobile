@@ -1,21 +1,32 @@
 package com.example.gp.Ui;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.gp.AuctionModel.AuctionsDatum;
 import com.example.gp.AuctionModel.Authentication1;
+import com.example.gp.GetProd.AuctionProduct;
+import com.example.gp.GetProd.Authentication3;
+import com.example.gp.Models.INTENTT;
 import com.example.gp.Models.ImageAdapter;
 import com.example.gp.Models.PostClient;
 import com.example.gp.R;
 import com.example.gp.SingleAuctionModel.Authentication2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,8 +34,13 @@ import retrofit2.Response;
 
 public class ProductDetail extends AppCompatActivity {
     TextView t1,t2,t3,t4,t5,t6;
+    TextView tt;
+    int Id;
     SharedPreferences preferences;
+    int id;
     SharedPreferences.Editor editor;
+    List<Authentication2> authentication2s;
+    List<AuctionProduct> authentication3s;
     String token;
 
     @Override
@@ -38,20 +54,35 @@ public class ProductDetail extends AppCompatActivity {
         t5 = findViewById(R.id.tvb1);
         t6 = findViewById(R.id.tvb2);
         ViewPager viewPager = findViewById(R.id.pa);
-         ArrayList<Integer> mImage = new ArrayList<Integer>();
-        ImageAdapter adapter = new ImageAdapter(this,mImage);
-        mImage.add(R.drawable.n11);
-        mImage.add(R.drawable.n22);
-        mImage.add(R.drawable.n33);
+        ImageAdapter adapter = new ImageAdapter(this, new INTENTT() {
+            @Override
+            public void OnitemClicked1(int Id ) {
+                Intent intent = new Intent(getBaseContext(), Product_bid.class);
+                intent.putExtra("id",id);
+                intent.putExtra("Id",Id);
+                startActivity(intent);
+
+
+            }
+        });
         viewPager.setPadding(100,0,100,0);
         viewPager.setAdapter(adapter);
         preferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        editor=preferences.edit();
-        token="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNjJhNjA2ODYwNjYzZDM4OGJiMzlmM2EzMWYxZjg5OTY1ZDgzODc0NDRhODUwM2U2ODQ0MTc5NmM2NGE2OTU0NjU4YjU0MzFhNDExOWU2YTciLCJpYXQiOjE2MjUzMjcyODAuMzc4OTgxLCJuYmYiOjE2MjUzMjcyODAuMzc4OTg3LCJleHAiOjE2NTY4NjMyODAuMTQ4NzE2LCJzdWIiOiIxNTYwIiwic2NvcGVzIjpbXX0.UfgLEpVTH4Gy70Dc48_y1ub2o3iGCQiAt_eBYS6wKzpq0QyZhDEGfeX45HCPDbChGWw0QLLKyvbANdTP-7W3_zC8rwQOLQKrayAlYKBAO16Lu0-6sSB8rRprm2fMAVj-G1H4AnQvUq5Ppif1IhmjVEN8fW3DkM-4xpI_5Nj9qnair3QVyr9ZXbiBu6mMmvluxBAaPF0_s_0LS6g98brBPfut426AsUKdwi3PsZQhyV5fuJT_8mX7L_YMwMMqakyAkD5HcmRyLee29iFvu8Gjprye8dM5UmW_-pCKKPBOdKQqbG1Geocns-u7ejmZBYEGqtkkSzDl8MUrcjFKC92soUIO-7La4wlOkpXM1eGRebVcrKNh1f81kLaQF3GhoxDLeuiDiQ2mrJegdKELVufg0SDPJohkj5miPiG5miNLb0jG2iQTUKAKBVPp93bey3Qe4hgo18kspb4TEsKHb0PNMykIni1TQQ_Ww5fRYxFOj5gGsqsxd_go7CPNPfk70ng96Zq3SNNif7x7fV_3GOoSyrBj7exfJBK07NQwLGzbboz78-5MagoLPHv1JD4NqfTikPBg8cvN1evZWtgPZWYepwYcJUvOpAq9r4290ZkUVbsGeCbGHMqzZ5VKrMINgbRSktmLRMkD6jUpom3dGqjiDVhpbQGwhVKl0Y-gmbGcjFM";
-     getOneAuction();
+        token=   preferences.getString("token","mknmkg50");
+        Intent intent = getIntent();
+        id= intent.getIntExtra("id",-1);
+        authentication2s = new ArrayList<>();
+        authentication3s = new ArrayList<>();
+
+
+
+        getOneAuction();
+
     }
     public void getOneAuction(){
-        PostClient.getInstance().getOneAuction(token,1).enqueue(new Callback<Authentication2>() {
+        Log.d("idddddddddddddd",id+"");
+        Log.d("tttttttttttttttt",token);
+        PostClient.getInstance().getOneAuction(token,id).enqueue(new Callback<Authentication2>() {
             @Override
             public void onResponse(Call<Authentication2> call, Response<Authentication2> response) {
                 if(response.isSuccessful())
@@ -64,6 +95,9 @@ public class ProductDetail extends AppCompatActivity {
                     t6.setText(response.body().getSingleAuction().getEndAt()+"");
 
                 }
+                else {
+                    Log.d("idddddddddddddd",response.code()+"");
+                }
 
             }
 
@@ -74,4 +108,27 @@ public class ProductDetail extends AppCompatActivity {
             }
         });
     }
+
+    public boolean isConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo = cm.getActiveNetworkInfo();
+        if (netinfo != null && netinfo.isConnectedOrConnecting()) {
+            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+            if((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting())) return true;
+            else return false;
+        } else
+            return false;
+    }
+    public AlertDialog.Builder buildDialog(Context c) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle("No Internet Connection");
+
+        builder.setMessage("You need to have Mobile Data or wifi to access this");
+
+        return builder;
+    }
+
+
 }

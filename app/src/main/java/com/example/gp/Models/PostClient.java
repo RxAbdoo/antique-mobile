@@ -1,19 +1,18 @@
 package com.example.gp.Models;
 
 import com.example.gp.AuctionModel.Authentication1;
+import com.example.gp.GetProd.AuctionProduct;
+import com.example.gp.GetProd.Authentication3;
 import com.example.gp.SingleAuctionModel.Authentication2;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PostClient {
-    private static final String BASE_URL="https://53b0525e0f71.ngrok.io/api/";
+    private static final String BASE_URL="https://0b86433d483d.ngrok.io/api/";
     private ApiInterface apiInterface;
     private static PostClient instance;
     Gson gson;
@@ -63,5 +62,18 @@ public class PostClient {
 
         return apiInterface.getOneAuction("Bearer "+token,id);
     }
+
+    public Call<Authentication3> getOneProduct(String token, int id)
+    {
+
+        return apiInterface.getOneProduct("Bearer "+token,id);
+    }
+
+    public Call<Authentication> logout(String token)
+    {
+
+        return apiInterface.logut("Bearer "+token);
+    }
+
 
 }
